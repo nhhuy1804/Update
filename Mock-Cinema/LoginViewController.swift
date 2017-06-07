@@ -27,24 +27,7 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func btnLogin(_ sender: Any) {
-        /*if (txtEmail.text?.isEmpty)! || (txtPassword.text?.isEmpty)! {
-            self.displayMyAlertMessage(userMessage: "Please fill out all required fields")
-        } else {
-            if let email = txtEmail.text, let password = txtPassword.text {
-                Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
-                    
-                    if error != nil {
-                        self.displayMyAlertMessage(userMessage: "Wrong email or password")
-                        self.txtPassword.text?.removeAll()
-                    }
-                    else {
-                        //self.performSegue(withIdentifier: "goHome", sender: self)
-                        let srcMain = self.storyboard?.instantiateViewController(withIdentifier: "home") as! MovieListViewController
-                        self.present(srcMain, animated: true)
-                    }
-                }
-            }
-        }*/
+        
         if (txtEmail.text?.isEmpty)! || (txtPassword.text?.isEmpty)! {
             self.displayMyAlertMessage(userMessage: "Please fill out all required fields")
         } else {
