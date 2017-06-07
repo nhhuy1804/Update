@@ -1,0 +1,6 @@
+framework module Pods_Mock_Cinema {
+  umbrella header "Pods-Mock-Cinema-umbrella.h"
+
+  export *
+  module * { export * }
+}
