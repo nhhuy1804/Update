@@ -44,8 +44,8 @@ class LoginViewController: UIViewController {
                         self.txtPassword.text?.removeAll()
                         
                     } else {
-                        let srcMain = self.storyboard?.instantiateViewController(withIdentifier: "home") as! MovieListViewController
-                        self.present(srcMain, animated: true)
+                        let src = self.storyboard?.instantiateViewController(withIdentifier: "home") as! MovieListViewController
+                        self.present(src, animated: true)
                     }
                 })
             }
@@ -53,6 +53,7 @@ class LoginViewController: UIViewController {
         
     }
     
+    // Function Alert message
     func displayMyAlertMessage(userMessage: String) {
         let myAlert = UIAlertController(title: "Alert", message: userMessage, preferredStyle: UIAlertControllerStyle.alert)
         

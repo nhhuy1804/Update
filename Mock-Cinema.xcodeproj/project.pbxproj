@@ -79,6 +79,15 @@
 			name = Controller;
 			sourceTree = "<group>";
 		};
+		F64276571EE82EC500D9C5E9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F6C3CA8F1EE1912400028722 /* Main.storyboard */,
+				F6C3CA941EE1912400028722 /* LaunchScreen.storyboard */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
 		F6C3CA7F1EE1912400028722 = {
 			isa = PBXGroup;
 			children = (
@@ -100,11 +109,10 @@
 		F6C3CA8A1EE1912400028722 /* Mock-Cinema */ = {
 			isa = PBXGroup;
 			children = (
+				F64276571EE82EC500D9C5E9 /* View */,
 				F615994F1EE6C85600ADE954 /* Controller */,
 				F6C3CA8B1EE1912400028722 /* AppDelegate.swift */,
-				F6C3CA8F1EE1912400028722 /* Main.storyboard */,
 				F6C3CA921EE1912400028722 /* Assets.xcassets */,
-				F6C3CA941EE1912400028722 /* LaunchScreen.storyboard */,
 				F6C3CA971EE1912400028722 /* Info.plist */,
 				3888F5D41EE2A23E006BE831 /* GoogleService-Info.plist */,
 			);

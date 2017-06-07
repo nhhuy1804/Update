@@ -21,7 +21,7 @@ class UserProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        getUserInfo()
+        getUserProfile()
         disableTextField()
     }
 
@@ -30,6 +30,7 @@ class UserProfileViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    // Logout current account
     @IBAction func btnLogout(_ sender: Any) {
         do {
             try Auth.auth().signOut()
@@ -58,17 +59,20 @@ class UserProfileViewController: UIViewController {
             displayMyAlertMessage(userMessage: "Please fill out all required fields")
         }
         else {
+            // Write edits to Firebase database
             let ref = Database.database().reference()
             let usrid = Auth.auth().currentUser?.uid
             let post : [String: AnyObject] = ["name": txtName.text as AnyObject, "email": txtEmail.text as AnyObject, "phone": txtPhone.text as AnyObject]
             ref.child("users").child(usrid!).setValue(post)
             displayMyAlertMessage(userMessage: "Update successful")
-            txtName.isEnabled = false
-            txtPhone.isEnabled = false
-            txtName.backgroundColor = txtEmail.backgroundColor
-            txtPhone.backgroundColor = txtEmail.backgroundColor
-            btnOK.backgroundColor = UIColor.brown
         }
+        txtName.isEnabled = false
+        txtPhone.isEnabled = false
+        txtName.backgroundColor = txtEmail.backgroundColor
+        txtPhone.backgroundColor = txtEmail.backgroundColor
+        btnOK.isEnabled = false
+        btnOK.backgroundColor = UIColor.brown
+        getUserProfile()
     }
     
     func disableTextField() {
@@ -80,7 +84,8 @@ class UserProfileViewController: UIViewController {
         btnOK.backgroundColor = UIColor.brown
     }
     
-    func getUserInfo() {
+    // Get user info
+    func getUserProfile() {
         let ref = Database.database().reference()
         let usrid = Auth.auth().currentUser?.uid
         ref.child("users").child(usrid!).observeSingleEvent(of: .value, with: { (snapshot) in
@@ -93,7 +98,7 @@ class UserProfileViewController: UIViewController {
             self.txtUID.text = usrid
             self.txtPhone.text = phone
         }) { (error) in
-            print(error.localizedDescription)
+            self.displayMyAlertMessage(userMessage: "Error")
         }
     }
     

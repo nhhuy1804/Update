@@ -23,6 +23,7 @@ class MovieListViewController: UIViewController {
             loginLogoutBtn.setTitle("Login", for: .normal)
             
         } else {
+            //user is login
             helloBtn.isHidden = false
             helloBtn.isEnabled = true
             loginLogoutBtn.setTitle("Logout", for: .normal)
@@ -37,8 +38,8 @@ class MovieListViewController: UIViewController {
     }
     
     @IBAction func btnLoginLogout(_ sender: Any) {
-        //user is not login
         if Auth.auth().currentUser?.uid != nil {
+            // //user is login
             do {
                 try Auth.auth().signOut()
             } catch let logoutError {
@@ -49,10 +50,7 @@ class MovieListViewController: UIViewController {
             helloBtn.isEnabled = false
             loginLogoutBtn.setTitle("Login", for: .normal)
         } else {
-            //btnHello.isHidden = false
-            //btnHello.isEnabled = true
-            //btnLogout.setTitle("Logout", for: .normal)
-            
+            // //user is not login
             let srcLogin = self.storyboard?.instantiateViewController(withIdentifier: "login") as! LoginViewController
             self.present(srcLogin, animated: true)
         }
@@ -62,14 +60,4 @@ class MovieListViewController: UIViewController {
         let srcUserInfo = self.storyboard?.instantiateViewController(withIdentifier: "userProfile") as! UserProfileViewController
         self.present(srcUserInfo, animated: true)
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

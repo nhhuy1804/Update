@@ -37,10 +37,10 @@ class RegisterViewController: UIViewController {
     @IBAction func btnAccept(_ sender: Any) {
         
         if (txtEmail.text?.isEmpty)! || (txtPassword.text?.isEmpty)! || (txtConfirmPassword.text?.isEmpty)! {
-            
+            //
             displayMyAlertMessage(userMessage: "Please fill out all required fields")
         } else {
-        
+            // check email format
             if !validateEmail(enteredEmail: txtEmail.text!) {
                 displayMyAlertMessage(userMessage: "Wrong email format")
             } else {
