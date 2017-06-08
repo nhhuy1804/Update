@@ -9,9 +9,13 @@
 import UIKit
 import Firebase
 
-class MovieListViewController: UIViewController {
+class MovieListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var loginLogoutBtn: UIButton!
     @IBOutlet weak var helloBtn: UIButton!
+    @IBOutlet weak var tbvMovieList: UITableView!
+    
+    var movies = [Movie]()
+    var posterImage: [Int:UIImage] = [:]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +33,7 @@ class MovieListViewController: UIViewController {
             loginLogoutBtn.setTitle("Logout", for: .normal)
             
         }
-
+        getMovies()
     }
 
     override func didReceiveMemoryWarning() {
@@ -60,4 +64,48 @@ class MovieListViewController: UIViewController {
         let srcUserInfo = self.storyboard?.instantiateViewController(withIdentifier: "userProfile") as! UserProfileViewController
         self.present(srcUserInfo, animated: true)
     }
+    
+    // get list movies
+    func getMovies() {
+        let ref = Database.database().reference()
+        ref.child("movie").observe(.childAdded, with: {snapshot in
+            
+            let snapshotValue = snapshot.value as? NSDictionary
+            self.movies.append(Movie(json: snapshotValue as! [String : Any]))
+            DispatchQueue.main.async {
+                self.tbvMovieList.reloadData()
+            }
+        })
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return movies.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MovieCell", for: indexPath) as! MovieListTableViewCell
+        let movie: Movie
+        
+        movie = movies[indexPath.row]
+        cell.imgPoster.image = #imageLiteral(resourceName: "loadingImage")
+        OperationQueue().addOperation { () -> Void in
+            if let img = Downloader.downloadImageWithURL(movie.posterURL) {
+                OperationQueue.main.addOperation({
+                    self.posterImage[self.movies[indexPath.row].id!] = img
+                    cell.imgPoster?.image = img
+                })
+            }
+        }
+        
+        cell.lblTitle?.text = movie.title
+        cell.lblOverview?.text = movie.overview
+        
+        return cell
+    }
+    
 }
