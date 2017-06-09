@@ -496,7 +496,7 @@
                                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Ax5-NF-XV5">
                                                 <rect key="frame" x="16" y="7" width="83" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <state key="normal" title="Hello"/>
+                                                <state key="normal" title="Profile"/>
                                                 <connections>
                                                     <action selector="btnHello:" destination="snG-7e-LVN" eventType="touchUpInside" id="sJa-gI-q2p"/>
                                                 </connections>
@@ -517,21 +517,33 @@
                             </navigationBar>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XMk-M9-7KV">
                                 <rect key="frame" x="0.0" y="617" width="125" height="50"/>
-                                <color key="backgroundColor" red="0.87438249589999995" green="0.98522681000000001" blue="0.3886291087" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="LgC-1Z-IPn"/>
                                 </constraints>
-                                <state key="normal" title="Button"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="Old Movies"/>
+                                <connections>
+                                    <action selector="btnOldMovies:" destination="snG-7e-LVN" eventType="touchUpInside" id="oli-Rk-9zy"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gDa-Jf-tEZ">
                                 <rect key="frame" x="125" y="617" width="125" height="50"/>
-                                <color key="backgroundColor" red="0.87438249589999995" green="0.98522681000000001" blue="0.3886291087" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="Button"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="Playing Now"/>
+                                <connections>
+                                    <action selector="btnPlayingNow:" destination="snG-7e-LVN" eventType="touchUpInside" id="ABr-Da-NF0"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iWW-ff-ate">
                                 <rect key="frame" x="250" y="617" width="125" height="50"/>
-                                <color key="backgroundColor" red="0.87438249589999995" green="0.98522681000000001" blue="0.3886291087" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="Button"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="Coming Soon"/>
+                                <connections>
+                                    <action selector="btnComingSoon:" destination="snG-7e-LVN" eventType="touchUpInside" id="804-UO-TkP"/>
+                                </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="141" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2em-YR-sBy">
                                 <rect key="frame" x="0.0" y="44" width="375" height="573"/>
@@ -575,6 +587,7 @@
                                                 <constraint firstAttribute="trailing" secondItem="81q-f7-Vfl" secondAttribute="trailing" constant="8" id="ymf-PU-GFW"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.87438249589999995" green="0.98522681000000001" blue="0.3886291087" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <outlet property="imgPoster" destination="rBi-Va-mSL" id="AOA-5Z-Oqy"/>
                                             <outlet property="lblOverview" destination="VWB-4C-8ai" id="F5C-Ij-d9e"/>
@@ -613,6 +626,9 @@
                     <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
+                        <outlet property="btnComingSoon" destination="iWW-ff-ate" id="Z55-Tz-wBP"/>
+                        <outlet property="btnOldMovies" destination="XMk-M9-7KV" id="gae-1D-bcV"/>
+                        <outlet property="btnPlayingNow" destination="gDa-Jf-tEZ" id="TkH-s6-5I2"/>
                         <outlet property="helloBtn" destination="Ax5-NF-XV5" id="6zk-J7-wez"/>
                         <outlet property="loginLogoutBtn" destination="1kv-Hg-rPg" id="Cb6-Yf-p5r"/>
                         <outlet property="tbvMovieList" destination="2em-YR-sBy" id="uwf-Ag-16O"/>

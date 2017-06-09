@@ -14,7 +14,13 @@ class MovieListViewController: UIViewController, UITableViewDelegate, UITableVie
     @IBOutlet weak var helloBtn: UIButton!
     @IBOutlet weak var tbvMovieList: UITableView!
     
+    @IBOutlet weak var btnOldMovies: UIButton!
+    @IBOutlet weak var btnPlayingNow: UIButton!
+    @IBOutlet weak var btnComingSoon: UIButton!
+    
+    
     var movies = [Movie]()
+    var moviesStatus = [Movie]()
     var posterImage: [Int:UIImage] = [:]
 
     override func viewDidLoad() {
@@ -33,7 +39,19 @@ class MovieListViewController: UIViewController, UITableViewDelegate, UITableVie
             loginLogoutBtn.setTitle("Logout", for: .normal)
             
         }
+        
+        btnOldMovies.isEnabled = true
+        btnComingSoon.isEnabled = true
+        btnPlayingNow.isEnabled = false
+        btnPlayingNow.backgroundColor = UIColor.red
+        btnComingSoon.backgroundColor = UIColor.white
+        btnOldMovies.backgroundColor = UIColor.white
+        btnPlayingNow.setTitleColor(UIColor.white, for: .normal)
+        btnOldMovies.setTitleColor(UIColor.red, for: .normal)
+        btnComingSoon.setTitleColor(UIColor.red, for: .normal)
+        
         getMovies()
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -65,6 +83,95 @@ class MovieListViewController: UIViewController, UITableViewDelegate, UITableVie
         self.present(srcUserInfo, animated: true)
     }
     
+    @IBAction func btnOldMovies(_ sender: Any) {
+        btnOldMovies.isEnabled = false
+        btnComingSoon.isEnabled = true
+        btnPlayingNow.isEnabled = true
+        btnOldMovies.backgroundColor = UIColor.red
+        btnComingSoon.backgroundColor = UIColor.white
+        btnPlayingNow.backgroundColor = UIColor.white
+        btnPlayingNow.setTitleColor(UIColor.red, for: .normal)
+        btnOldMovies.setTitleColor(UIColor.white, for: .normal)
+        btnComingSoon.setTitleColor(UIColor.red, for: .normal)
+        
+        getOldMovies()
+    }
+    
+    @IBAction func btnPlayingNow(_ sender: Any) {btnOldMovies.isEnabled = false
+        btnOldMovies.isEnabled = true
+        btnComingSoon.isEnabled = true
+        btnPlayingNow.isEnabled = false
+        btnPlayingNow.backgroundColor = UIColor.red
+        btnComingSoon.backgroundColor = UIColor.white
+        btnOldMovies.backgroundColor = UIColor.white
+        btnPlayingNow.setTitleColor(UIColor.white, for: .normal)
+        btnOldMovies.setTitleColor(UIColor.red, for: .normal)
+        btnComingSoon.setTitleColor(UIColor.red, for: .normal)
+        
+        getPlayingNowMovies()
+    }
+    
+    @IBAction func btnComingSoon(_ sender: Any) {
+        btnOldMovies.isEnabled = true
+        btnComingSoon.isEnabled = false
+        btnPlayingNow.isEnabled = true
+        btnComingSoon.backgroundColor = UIColor.red
+        btnOldMovies.backgroundColor = UIColor.white
+        btnPlayingNow.backgroundColor = UIColor.white
+        btnPlayingNow.setTitleColor(UIColor.red, for: .normal)
+        btnOldMovies.setTitleColor(UIColor.red, for: .normal)
+        btnComingSoon.setTitleColor(UIColor.white, for: .normal)
+        getComingSoon()
+    }
+    
+    //get date from database
+    func getDate(releaseInformation: String, interval: Double) -> Date {
+        let dateFormat = DateFormatter()
+        dateFormat.dateStyle = DateFormatter.Style.short
+        var date = dateFormat.date(from: releaseInformation)
+        date?.addTimeInterval(interval)
+        return date!
+    }
+    
+    // get movies playing now
+    func getPlayingNowMovies() {
+        moviesStatus.removeAll()
+        let dateNow = Date()
+        for movie in movies {
+            // play 2 weeks
+            if (getDate(releaseInformation: movie.releaseInformation!, interval: 0) <= dateNow && dateNow <= getDate(releaseInformation: movie.releaseInformation!, interval: 1209600)) {
+                moviesStatus.append(movie)
+            }
+        }
+        self.tbvMovieList.reloadData()
+    }
+    
+    // get old movies
+    func getOldMovies() {
+        moviesStatus.removeAll()
+        let dateNow = Date()
+        for movie in movies {
+            // release date < date now 2 weeks
+            if (getDate(releaseInformation: movie.releaseInformation!, interval: 1209600) < dateNow) {
+                moviesStatus.append(movie)
+            }
+        }
+        tbvMovieList.reloadData()
+    }
+    
+    // get coming soon movies
+    func getComingSoon() {
+        moviesStatus.removeAll()
+        let dateNow = Date()
+        for movie in movies {
+            // release date > date now
+            if (getDate(releaseInformation: movie.releaseInformation!, interval: 0) > dateNow) {
+                moviesStatus.append(movie)
+            }
+        }
+        tbvMovieList.reloadData()
+    }
+    
     // get list movies
     func getMovies() {
         let ref = Database.database().reference()
@@ -75,6 +182,7 @@ class MovieListViewController: UIViewController, UITableViewDelegate, UITableVie
             DispatchQueue.main.async {
                 self.tbvMovieList.reloadData()
             }
+            self.getPlayingNowMovies()
         })
     }
     
@@ -83,15 +191,15 @@ class MovieListViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return movies.count
+        return moviesStatus.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "MovieCell", for: indexPath) as! MovieListTableViewCell
         let movie: Movie
-        
-        movie = movies[indexPath.row]
+        movie = moviesStatus[indexPath.row]
+        //movie = movies[indexPath.row]
         cell.imgPoster.image = #imageLiteral(resourceName: "loadingImage")
         OperationQueue().addOperation { () -> Void in
             if let img = Downloader.downloadImageWithURL(movie.posterURL) {
