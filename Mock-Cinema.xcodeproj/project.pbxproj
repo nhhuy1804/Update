@@ -13,6 +13,7 @@
 		38E89AC11EE7DC8A007AB117 /* MovieListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E89AC01EE7DC8A007AB117 /* MovieListViewController.swift */; };
 		38E89AC31EE7F7CD007AB117 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E89AC21EE7F7CD007AB117 /* ChangePasswordViewController.swift */; };
 		F5F59FCB3EDC43CC284FE9C9 /* Pods_Mock_Cinema.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C2957294A80FE5C0A4D3640 /* Pods_Mock_Cinema.framework */; };
+		F63B0CC31EEBAD0F000CF286 /* MovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63B0CC21EEBAD0E000CF286 /* MovieDetailViewController.swift */; };
 		F64276591EE9705400D9C5E9 /* Download.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64276581EE9705400D9C5E9 /* Download.swift */; };
 		F642765B1EE9708900D9C5E9 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = F642765A1EE9708900D9C5E9 /* Movie.swift */; };
 		F642765D1EE972E200D9C5E9 /* MovieListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F642765C1EE972E200D9C5E9 /* MovieListTableViewCell.swift */; };
@@ -32,6 +33,7 @@
 		38E89AC21EE7F7CD007AB117 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
 		78B7DF684B29A7F3A795E274 /* Pods-Mock-Cinema.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mock-Cinema.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Mock-Cinema/Pods-Mock-Cinema.debug.xcconfig"; sourceTree = "<group>"; };
 		89A227AEFBEB03D50F6724D1 /* Pods-Mock-Cinema.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mock-Cinema.release.xcconfig"; path = "Pods/Target Support Files/Pods-Mock-Cinema/Pods-Mock-Cinema.release.xcconfig"; sourceTree = "<group>"; };
+		F63B0CC21EEBAD0E000CF286 /* MovieDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieDetailViewController.swift; sourceTree = "<group>"; };
 		F64276581EE9705400D9C5E9 /* Download.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Download.swift; sourceTree = "<group>"; };
 		F642765A1EE9708900D9C5E9 /* Movie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		F642765C1EE972E200D9C5E9 /* MovieListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieListTableViewCell.swift; sourceTree = "<group>"; };
@@ -81,6 +83,7 @@
 				F65018231EE710410079AC88 /* UserProfileViewController.swift */,
 				38E89AC01EE7DC8A007AB117 /* MovieListViewController.swift */,
 				38E89AC21EE7F7CD007AB117 /* ChangePasswordViewController.swift */,
+				F63B0CC21EEBAD0E000CF286 /* MovieDetailViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -258,6 +261,7 @@
 				38E89AC31EE7F7CD007AB117 /* ChangePasswordViewController.swift in Sources */,
 				38E89AC11EE7DC8A007AB117 /* MovieListViewController.swift in Sources */,
 				F64276591EE9705400D9C5E9 /* Download.swift in Sources */,
+				F63B0CC31EEBAD0F000CF286 /* MovieDetailViewController.swift in Sources */,
 				F642765B1EE9708900D9C5E9 /* Movie.swift in Sources */,
 				F642765D1EE972E200D9C5E9 /* MovieListTableViewCell.swift in Sources */,
 				3888F5D91EE2B075006BE831 /* RegisterViewController.swift in Sources */,

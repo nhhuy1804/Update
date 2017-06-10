@@ -71,6 +71,7 @@ class MovieListViewController: UIViewController, UITableViewDelegate, UITableVie
             helloBtn.isHidden = true
             helloBtn.isEnabled = false
             loginLogoutBtn.setTitle("Login", for: .normal)
+        
         } else {
             // //user is not login
             let srcLogin = self.storyboard?.instantiateViewController(withIdentifier: "login") as! LoginViewController
@@ -214,6 +215,19 @@ class MovieListViewController: UIViewController, UITableViewDelegate, UITableVie
         cell.lblOverview?.text = movie.overview
         
         return cell
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier != nil {
+            
+            let movieDetailVC = segue.destination as! MovieDetailViewController
+            if let indexPath = self.tbvMovieList.indexPathForSelectedRow {
+                
+                movieDetailVC.movie = moviesStatus[indexPath.row]
+                movieDetailVC.image = posterImage[moviesStatus[indexPath.row].id!]
+            }
+        }
     }
     
 }
