@@ -36,7 +36,12 @@ class MovieDetailViewController: UIViewController {
     }
 
     func loadMovieDetail() {
-        imgPoster.image = image
+        //imgPoster.image = image
+        if let img = Downloader.downloadImageWithURL(movie?.posterURL) {
+            OperationQueue.main.addOperation({
+                self.imgPoster.image = img
+            })
+        }
         lblTitle.text = movie?.title?.uppercased()
         lblOverview.text = "Overview: " + (movie?.overview)!
         lblReleaseInformation.text = "Release Information: " + (movie?.releaseInformation)!
@@ -46,7 +51,7 @@ class MovieDetailViewController: UIViewController {
     }
     
     @IBAction func btnBack(_ sender: Any) {
-        let src = self.storyboard?.instantiateViewController(withIdentifier: "home") as! MovieListViewController
-        self.present(src, animated: true)
+        dismiss(animated: true, completion: nil )
     }
+    
 }

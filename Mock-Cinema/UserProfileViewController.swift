@@ -42,6 +42,10 @@ class UserProfileViewController: UIViewController {
         self.present(src, animated: true)
     }
     
+    @IBAction func btnBack(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
     @IBAction func btnChangePassword(_ sender: Any) {
     }
     

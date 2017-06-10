@@ -56,8 +56,7 @@ class ChangePasswordViewController: UIViewController {
     }
 
     @IBAction func btnCancel(_ sender: Any) {
-        let src = self.storyboard?.instantiateViewController(withIdentifier: "userProfile") as! UserProfileViewController
-        self.present(src, animated: true)
+        dismiss(animated: true, completion: nil)
     }
     
     // Function Alert message
