@@ -18,6 +18,7 @@ class Movie {
     var runTime: String?
     var originalLanguage: String?
     var budget: String?
+    var image: UIImage?
     
     init(json: [String:Any]) {
         id = json["id"] as? Int
@@ -29,4 +30,5 @@ class Movie {
         originalLanguage = json["originalLanguage"] as? String
         budget = json["budget"] as? String
     }
+    
 }

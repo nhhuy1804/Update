@@ -14,6 +14,9 @@
 		38E89AC31EE7F7CD007AB117 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E89AC21EE7F7CD007AB117 /* ChangePasswordViewController.swift */; };
 		F5F59FCB3EDC43CC284FE9C9 /* Pods_Mock_Cinema.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C2957294A80FE5C0A4D3640 /* Pods_Mock_Cinema.framework */; };
 		F63B0CC31EEBAD0F000CF286 /* MovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63B0CC21EEBAD0E000CF286 /* MovieDetailViewController.swift */; };
+		F63B0CC51EEEDB41000CF286 /* ChooseSeatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63B0CC41EEEDB41000CF286 /* ChooseSeatViewController.swift */; };
+		F63B0CC81EEEDBF7000CF286 /* Seat.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63B0CC71EEEDBF7000CF286 /* Seat.swift */; };
+		F63B0CCA1EEEDE91000CF286 /* SeatCellCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63B0CC91EEEDE91000CF286 /* SeatCellCollectionView.swift */; };
 		F64276591EE9705400D9C5E9 /* Download.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64276581EE9705400D9C5E9 /* Download.swift */; };
 		F642765B1EE9708900D9C5E9 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = F642765A1EE9708900D9C5E9 /* Movie.swift */; };
 		F642765D1EE972E200D9C5E9 /* MovieListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F642765C1EE972E200D9C5E9 /* MovieListTableViewCell.swift */; };
@@ -34,6 +37,9 @@
 		78B7DF684B29A7F3A795E274 /* Pods-Mock-Cinema.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mock-Cinema.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Mock-Cinema/Pods-Mock-Cinema.debug.xcconfig"; sourceTree = "<group>"; };
 		89A227AEFBEB03D50F6724D1 /* Pods-Mock-Cinema.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mock-Cinema.release.xcconfig"; path = "Pods/Target Support Files/Pods-Mock-Cinema/Pods-Mock-Cinema.release.xcconfig"; sourceTree = "<group>"; };
 		F63B0CC21EEBAD0E000CF286 /* MovieDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieDetailViewController.swift; sourceTree = "<group>"; };
+		F63B0CC41EEEDB41000CF286 /* ChooseSeatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseSeatViewController.swift; sourceTree = "<group>"; };
+		F63B0CC71EEEDBF7000CF286 /* Seat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Seat.swift; sourceTree = "<group>"; };
+		F63B0CC91EEEDE91000CF286 /* SeatCellCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeatCellCollectionView.swift; sourceTree = "<group>"; };
 		F64276581EE9705400D9C5E9 /* Download.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Download.swift; sourceTree = "<group>"; };
 		F642765A1EE9708900D9C5E9 /* Movie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		F642765C1EE972E200D9C5E9 /* MovieListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieListTableViewCell.swift; sourceTree = "<group>"; };
@@ -78,14 +84,27 @@
 		F615994F1EE6C85600ADE954 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				F642765C1EE972E200D9C5E9 /* MovieListTableViewCell.swift */,
 				3888F5D61EE2AB7D006BE831 /* LoginViewController.swift */,
 				3888F5D81EE2B075006BE831 /* RegisterViewController.swift */,
 				F65018231EE710410079AC88 /* UserProfileViewController.swift */,
 				38E89AC01EE7DC8A007AB117 /* MovieListViewController.swift */,
 				38E89AC21EE7F7CD007AB117 /* ChangePasswordViewController.swift */,
 				F63B0CC21EEBAD0E000CF286 /* MovieDetailViewController.swift */,
+				F63B0CC41EEEDB41000CF286 /* ChooseSeatViewController.swift */,
+				F63B0CC91EEEDE91000CF286 /* SeatCellCollectionView.swift */,
 			);
 			name = Controller;
+			sourceTree = "<group>";
+		};
+		F63B0CC61EEEDB7E000CF286 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F64276581EE9705400D9C5E9 /* Download.swift */,
+				F642765A1EE9708900D9C5E9 /* Movie.swift */,
+				F63B0CC71EEEDBF7000CF286 /* Seat.swift */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 		F64276571EE82EC500D9C5E9 /* View */ = {
@@ -118,15 +137,13 @@
 		F6C3CA8A1EE1912400028722 /* Mock-Cinema */ = {
 			isa = PBXGroup;
 			children = (
+				F63B0CC61EEEDB7E000CF286 /* Model */,
 				F64276571EE82EC500D9C5E9 /* View */,
 				F615994F1EE6C85600ADE954 /* Controller */,
 				F6C3CA8B1EE1912400028722 /* AppDelegate.swift */,
 				F6C3CA921EE1912400028722 /* Assets.xcassets */,
 				F6C3CA971EE1912400028722 /* Info.plist */,
 				3888F5D41EE2A23E006BE831 /* GoogleService-Info.plist */,
-				F64276581EE9705400D9C5E9 /* Download.swift */,
-				F642765A1EE9708900D9C5E9 /* Movie.swift */,
-				F642765C1EE972E200D9C5E9 /* MovieListTableViewCell.swift */,
 			);
 			path = "Mock-Cinema";
 			sourceTree = "<group>";
@@ -255,13 +272,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F63B0CC51EEEDB41000CF286 /* ChooseSeatViewController.swift in Sources */,
 				3888F5D71EE2AB7D006BE831 /* LoginViewController.swift in Sources */,
+				F63B0CC81EEEDBF7000CF286 /* Seat.swift in Sources */,
 				F65018241EE710420079AC88 /* UserProfileViewController.swift in Sources */,
 				F6C3CA8C1EE1912400028722 /* AppDelegate.swift in Sources */,
 				38E89AC31EE7F7CD007AB117 /* ChangePasswordViewController.swift in Sources */,
 				38E89AC11EE7DC8A007AB117 /* MovieListViewController.swift in Sources */,
 				F64276591EE9705400D9C5E9 /* Download.swift in Sources */,
 				F63B0CC31EEBAD0F000CF286 /* MovieDetailViewController.swift in Sources */,
+				F63B0CCA1EEEDE91000CF286 /* SeatCellCollectionView.swift in Sources */,
 				F642765B1EE9708900D9C5E9 /* Movie.swift in Sources */,
 				F642765D1EE972E200D9C5E9 /* MovieListTableViewCell.swift in Sources */,
 				3888F5D91EE2B075006BE831 /* RegisterViewController.swift in Sources */,

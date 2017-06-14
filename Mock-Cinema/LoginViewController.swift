@@ -26,6 +26,10 @@ class LoginViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func btnBack(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
     @IBAction func btnLogin(_ sender: Any) {
         
         if (txtEmail.text?.isEmpty)! || (txtPassword.text?.isEmpty)! {

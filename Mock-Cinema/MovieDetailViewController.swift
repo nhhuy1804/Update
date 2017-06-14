@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class MovieDetailViewController: UIViewController {
 
@@ -33,25 +34,48 @@ class MovieDetailViewController: UIViewController {
     }
     
     @IBAction func btnBookTicketNow(_ sender: Any) {
+        if Auth.auth().currentUser == nil {
+            // No user is signed in.
+            let loginVC = self.storyboard?.instantiateViewController(withIdentifier: "login") as! LoginViewController
+            self.present(loginVC, animated: true)
+        }
     }
 
     func loadMovieDetail() {
-        //imgPoster.image = image
-        if let img = Downloader.downloadImageWithURL(movie?.posterURL) {
-            OperationQueue.main.addOperation({
+        imgPoster.image = #imageLiteral(resourceName: "loadingImage")
+        /*if let img = Downloader.downloadImageWithURL(movie?.posterURL) {
+            DispatchQueue.main.async {
                 self.imgPoster.image = img
-            })
+                
+            }
+        }*/
+        OperationQueue().addOperation { () -> Void in
+            if let img = Downloader.downloadImageWithURL(self.movie?.posterURL) {
+                OperationQueue.main.addOperation({
+                    self.imgPoster.image = img
+                })
+            }
         }
+        
         lblTitle.text = movie?.title?.uppercased()
         lblOverview.text = "Overview: " + (movie?.overview)!
         lblReleaseInformation.text = "Release Information: " + (movie?.releaseInformation)!
         lblOriginalLanguage.text = "Original Languege: " + (movie?.originalLanguage)!
         lblBudget.text = "Budget: " + (movie?.budget)!
         lblRunTime.text = "Run Time: " + (movie?.runTime)!
+        
     }
     
     @IBAction func btnBack(_ sender: Any) {
         dismiss(animated: true, completion: nil )
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+                let seatsVC = segue.destination as! ChooseSeatViewController
+                seatsVC.movie = movie
+                seatsVC.screenId = "screen1"
+        
     }
     
 }
