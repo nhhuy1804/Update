@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		38870A671EF131B00084A167 /* Carts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38870A661EF131B00084A167 /* Carts.swift */; };
+		38870A691EF133410084A167 /* CartsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38870A681EF133410084A167 /* CartsViewController.swift */; };
+		38870A6B1EF133DC0084A167 /* CartCellTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38870A6A1EF133DC0084A167 /* CartCellTableView.swift */; };
 		3888F5D51EE2A23E006BE831 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3888F5D41EE2A23E006BE831 /* GoogleService-Info.plist */; };
 		3888F5D71EE2AB7D006BE831 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3888F5D61EE2AB7D006BE831 /* LoginViewController.swift */; };
 		3888F5D91EE2B075006BE831 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3888F5D81EE2B075006BE831 /* RegisterViewController.swift */; };
@@ -29,6 +32,9 @@
 
 /* Begin PBXFileReference section */
 		0C2957294A80FE5C0A4D3640 /* Pods_Mock_Cinema.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mock_Cinema.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		38870A661EF131B00084A167 /* Carts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Carts.swift; sourceTree = "<group>"; };
+		38870A681EF133410084A167 /* CartsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartsViewController.swift; sourceTree = "<group>"; };
+		38870A6A1EF133DC0084A167 /* CartCellTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartCellTableView.swift; sourceTree = "<group>"; };
 		3888F5D41EE2A23E006BE831 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3888F5D61EE2AB7D006BE831 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		3888F5D81EE2B075006BE831 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
@@ -93,6 +99,8 @@
 				F63B0CC21EEBAD0E000CF286 /* MovieDetailViewController.swift */,
 				F63B0CC41EEEDB41000CF286 /* ChooseSeatViewController.swift */,
 				F63B0CC91EEEDE91000CF286 /* SeatCellCollectionView.swift */,
+				38870A681EF133410084A167 /* CartsViewController.swift */,
+				38870A6A1EF133DC0084A167 /* CartCellTableView.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -103,6 +111,7 @@
 				F64276581EE9705400D9C5E9 /* Download.swift */,
 				F642765A1EE9708900D9C5E9 /* Movie.swift */,
 				F63B0CC71EEEDBF7000CF286 /* Seat.swift */,
+				38870A661EF131B00084A167 /* Carts.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -272,11 +281,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				38870A691EF133410084A167 /* CartsViewController.swift in Sources */,
 				F63B0CC51EEEDB41000CF286 /* ChooseSeatViewController.swift in Sources */,
 				3888F5D71EE2AB7D006BE831 /* LoginViewController.swift in Sources */,
 				F63B0CC81EEEDBF7000CF286 /* Seat.swift in Sources */,
 				F65018241EE710420079AC88 /* UserProfileViewController.swift in Sources */,
 				F6C3CA8C1EE1912400028722 /* AppDelegate.swift in Sources */,
+				38870A671EF131B00084A167 /* Carts.swift in Sources */,
 				38E89AC31EE7F7CD007AB117 /* ChangePasswordViewController.swift in Sources */,
 				38E89AC11EE7DC8A007AB117 /* MovieListViewController.swift in Sources */,
 				F64276591EE9705400D9C5E9 /* Download.swift in Sources */,
@@ -285,6 +296,7 @@
 				F642765B1EE9708900D9C5E9 /* Movie.swift in Sources */,
 				F642765D1EE972E200D9C5E9 /* MovieListTableViewCell.swift in Sources */,
 				3888F5D91EE2B075006BE831 /* RegisterViewController.swift in Sources */,
+				38870A6B1EF133DC0084A167 /* CartCellTableView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
