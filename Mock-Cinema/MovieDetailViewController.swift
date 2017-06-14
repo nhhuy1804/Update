@@ -67,7 +67,7 @@ class MovieDetailViewController: UIViewController {
     }
     
     @IBAction func btnBack(_ sender: Any) {
-        dismiss(animated: true, completion: nil )
+        dismiss(animated: true, completion: nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

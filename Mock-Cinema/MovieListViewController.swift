@@ -22,9 +22,27 @@ class MovieListViewController: UIViewController, UITableViewDelegate, UITableVie
     var movies = [Movie]()
     var moviesStatus = [Movie]()
     var posterImage: [Int:UIImage] = [:]
-
+    
+    let searchController = UISearchController(searchResultsController: nil)
+    
+    var filteredMovie = [Movie]()
+    
+    func filterContentForSearchText(searchText: String, scope: String = "All") {
+        filteredMovie = moviesStatus.filter { movie in
+            return (movie.title?.lowercased().contains(searchText.lowercased()))!
+        }
+        
+        tbvMovieList.reloadData()
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        searchController.searchResultsUpdater = self as? UISearchResultsUpdating
+        searchController.dimsBackgroundDuringPresentation = false
+        definesPresentationContext = true
+        tbvMovieList.tableHeaderView = searchController.searchBar
+        
 
         //user is not login
         if Auth.auth().currentUser?.uid == nil {
@@ -192,6 +210,9 @@ class MovieListViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if searchController.isActive && searchController.searchBar.text != "" {
+            return filteredMovie.count
+        }
         return moviesStatus.count
     }
     
@@ -199,13 +220,20 @@ class MovieListViewController: UIViewController, UITableViewDelegate, UITableVie
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "MovieCell", for: indexPath) as! MovieListTableViewCell
         let movie: Movie
-        movie = moviesStatus[indexPath.row]
+        
+        if searchController.isActive && searchController.searchBar.text != "" {
+            movie = filteredMovie[indexPath.row]
+        } else {
+            movie = moviesStatus[indexPath.row]
+        }
+        
+        //movie = moviesStatus[indexPath.row]
         //movie = movies[indexPath.row]
         cell.imgPoster.image = #imageLiteral(resourceName: "loadingImage")
         OperationQueue().addOperation { () -> Void in
             if let img = Downloader.downloadImageWithURL(movie.posterURL) {
                 OperationQueue.main.addOperation({
-                    self.posterImage[self.movies[indexPath.row].id!] = img
+                    self.posterImage[self.moviesStatus[indexPath.row].id!] = img
                     cell.imgPoster?.image = img
                 })
             }
@@ -223,11 +251,20 @@ class MovieListViewController: UIViewController, UITableViewDelegate, UITableVie
             
             let movieDetailVC = segue.destination as! MovieDetailViewController
             if let indexPath = self.tbvMovieList.indexPathForSelectedRow {
+                if searchController.isActive && searchController.searchBar.text != "" {
+                    movieDetailVC.movie = filteredMovie[indexPath.row]
+                } else {
+                    movieDetailVC.movie = moviesStatus[indexPath.row]
+                }
                 
-                movieDetailVC.movie = moviesStatus[indexPath.row]
-                movieDetailVC.image = posterImage[moviesStatus[indexPath.row].id!]
             }
         }
     }
     
+}
+
+extension MovieListViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        filterContentForSearchText(searchText: searchController.searchBar.text!)
+    }
 }
